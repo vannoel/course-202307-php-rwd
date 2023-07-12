@@ -1,0 +1,42 @@
+version: '3'
+volumes:
+  db_data:
+services:
+  db:
+    image: mariadb:10.11.4
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MARIADB_DATABASE: 'laravel'
+      MARIADB_USER: 'admin'
+      MARIADB_PASSWORD: '1234'
+      MARIADB_RANDOM_ROOT_PASSWORD: 'yes'
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+    depends_on:
+      - db
+    volumes:
+      - ./backend/app:/api/app
+      - ./backend/config:/api/config
+      - ./backend/routes:/api/routes
+      - ./backend/storage:/api/storage
+  # forestage:
+  #   container_name: forestage
+  #   build:
+  #     context: ./forestage
+  #     dockerfile: Dockerfile
+  #   restart: unless-stopped
+  #   volumes: 
+  #     - ./cert:/usr/share/nginx/cert
+  #     - ./storage/app/public:/usr/share/nginx/html/storage
+  #   ports:
+  #     - 9443:9443
