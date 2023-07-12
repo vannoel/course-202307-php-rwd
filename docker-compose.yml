@@ -5,7 +5,7 @@ services:
   db:
     image: mariadb:10.11.4
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    restart: always
+    restart: unless-stopped
     ports:
       - "3306:3306"
     volumes:
@@ -29,14 +29,13 @@ services:
       - ./backend/config:/api/config
       - ./backend/routes:/api/routes
       - ./backend/storage:/api/storage
-  # forestage:
-  #   container_name: forestage
-  #   build:
-  #     context: ./forestage
-  #     dockerfile: Dockerfile
-  #   restart: unless-stopped
-  #   volumes: 
-  #     - ./cert:/usr/share/nginx/cert
-  #     - ./storage/app/public:/usr/share/nginx/html/storage
-  #   ports:
-  #     - 9443:9443
+  forestage:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes: 
+      - ./frontend:/usr/share/nginx/html
+      - ./frontend/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:80

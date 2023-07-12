@@ -1,0 +1,25 @@
+{
+  "name": "course-202307-php-rwd-frontend",
+  "private": true,
+  "scripts": {
+    "copyVendor": "gulp copyVendor",
+    "updateHomePage": "gulp updateHomePage",
+    "backupCodebase": "gulp backupCodebase"
+  },
+  "author": {
+    "name": "Van Noel",
+    "email": "vannoel@cogman.org"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "gsap": "^3.12.2",
+    "jquery": "^3.7.0",
+    "swiper": "^10.0.4"
+  },
+  "devDependencies": {
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0"
+  }
+}

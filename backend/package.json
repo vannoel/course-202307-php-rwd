@@ -1,5 +1,10 @@
 {
+    "name": "course-202307-php-rwd-backend",
     "private": true,
+    "author": {
+        "name": "Van Noel",
+        "email": "vannoel@cogman.org"
+    },
     "scripts": {
         "dev": "vite",
         "build": "vite build"
