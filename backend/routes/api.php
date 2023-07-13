@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('sys/checkAlive', 'App\Http\Controllers\System\SystemController@checkAlive');
+Route::get('swagger', 'App\Http\Controllers\Swagger\SwaggerController@getJSON');
+
+Route::get('system/checkAlive', 'App\Http\Controllers\System\SystemController@checkAlive');
