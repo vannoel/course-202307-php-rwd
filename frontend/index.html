@@ -5,14 +5,43 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" href="./libs/fontawesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="./style/index.css"> -->
+  <!-- Css & Css of Packages -->
+  <link rel="stylesheet" type="text/css" href="./style/index.css">
+  <link rel="stylesheet" type="text/css" href="./libs/fontawesome/css/all.min.css">
+
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <title>Course of 2023 07 Laravel and RWD</title>
+  <title>PhotoCatcher | Course of 2023 07 Laravel and RWD</title>
 </head>
 
 <body id="main">
-  123
+  <!-- Html -->
+  <!-- Nav -->
+  <nav>
+    <img src="./img/logo.png" />
+  </nav>
+  
+
+  <!-- Landing -->
+
+  <!-- Cat Photos -->
+
+  <!-- Photographer -->
+
+  <!-- Footer -->
+
+  <!-- JavsScript & JavsScript of Packages -->
+  <script type="text/javascript" src="./libs/jquery/jquery.min.js"></script>
+  <script>
+    const checkServerAlive = () => {
+      $.ajax({
+        url: "/api/system/checkAlive",
+      });
+    }
+
+    $(document).ready(function () {
+      checkServerAlive();
+    })
+  </script>
 </body>
 
 </html>
