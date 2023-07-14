@@ -4,6 +4,7 @@
 @import url('colormap.css');
 @import url('font.css');
 
+@import url('global.css');
 @import url('common.css');
 
 @import url('home.css');

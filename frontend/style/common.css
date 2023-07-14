@@ -1,40 +1,20 @@
-*,
-*:not(i)::after,
-*:not(i)::before {
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  font-family: "Montserrat", sans-serif;
-  outline: none;
-}
-
-*::-webkit-scrollbar {
+.icon-button {
+  border: none;
   background: transparent;
-  width: 8px;
-  height: 8px;
+  cursor: pointer;
+} 
+
+.link-button {
+  color: var(--color-white);
+}
+.link-button:hover,
+.link-button:active,
+.menu-button:hover,
+.menu-button:active {
+  color: var(--color-pink);
 }
 
-*::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-img {
-  width: 100%;
+.menu-button {
+  color: var(--color-white);
+  text-decoration: none;
 }

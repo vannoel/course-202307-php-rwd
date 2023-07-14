@@ -16,30 +16,230 @@
 <body id="main">
   <!-- Html -->
   <!-- Nav -->
-  <nav>
-    <img src="./img/logo.png" />
+  <nav class="main_navbar">
+    <div class="navbar_logo">
+      <a href="/">
+        <img src="./img/logo.png" />
+      </a>
+    </div>
+    <button id="buttonMenu" class="icon-button">
+      <i class="navbar_icon fa-solid fa-bars fa-fw"></i>
+    </button>
   </nav>
-  
 
   <!-- Landing -->
+  <section class="main_landing">
+    <img class="landing_bg" src="./img/bg-landing.png" />
+    <div class="landing_card">
+      <img class="card_icon icon-left" src="./img/paw.png" />
+      <img class="card_icon icon-right" src="./img/paw.png" />
+      <h1 class="font-h1 card_titleshadow">Catch your Cats!</h1>
+      <h1 class="font-h1 card_title"><span class="title_emphasis">Cat</span>ch your <span
+          class="title_emphasis">Cats</span>!</h1>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="main_section section-introduction">
+    <div class="introduction_block block-cats">
+      <div class="block_photos">
+        <img class="photos_icon" src="./img/paw.png" />
+        <img class="photos_cat cat-1" src="./img/pic-cat-1.png" />
+        <img class="photos_cat cat-2" src="./img/pic-cat-2.png" />
+      </div>
+      <div id="share" class="block_text">
+        <h2 class="font-h2">
+          SHOW YOUR<br/>
+          LOVELY CATS!
+        </h2>
+        <p class="font-p">
+          Take pictures of your adorable cats and share to us their beauty!
+        </p>
+      </div>
+    </div>
+    <img class="introduction_icon" src="./img/paw.png" />
+    <div class="introduction_block block-photographer">
+      <div id="sponsor" class="block_text">
+        <h2 class="font-h2">
+          SPONSOR PHOTOGRAPHERS
+        </h2>
+        <p class="font-p">
+          Don’t have any cat? See our awesome photographers. If you like their cat pictures, Sponsoring them to let them keep doing the thing they love. To take cat pictures!
+        </p>
+      </div>
+      <div class="block_photos">
+        <img class="photos_icon" src="./img/paw.png" />
+        <img class="photos_photographer photographer-2" src="./img/pic-photographer-2.png" />
+        <img class="photos_photographer photographer-1" src="./img/pic-photographer-1.png" />
+      </div>
+    </div>
+  </section>
 
   <!-- Cat Photos -->
+  <section id="cats" class="main_section section-cat">
+    <div class="section_card">
+      <img class="card_icon icon-left" src="./img/paw.png" />
+      <img class="card_icon icon-right" src="./img/paw.png" />
+      <h1 class="card_title font-h1">
+        ADORABLE<br/>
+        CATS!
+      </h1>
+    </div>
+    <div id="listCats" class="section_list"></div>
+  </section>
 
   <!-- Photographer -->
+  <section id="photographers" class="main_section section-photographer">
+    <div class="section_card">
+      <img class="card_icon icon-left" src="./img/paw.png" />
+      <img class="card_icon icon-right" src="./img/paw.png" />
+      <h1 class="card_title font-h1">
+        AWESOME<br/>
+        PHOTOGRAPHER!
+      </h1>
+    </div>
+    <div id="listPhotographer" class="section_list"></div>
+  </section>
 
   <!-- Footer -->
+  <footer id="footer" class="maiin_footer">
+    <!-- paw icon -->
+    <div class="footer_icon">
+      <img src="./img/paw.png" />
+    </div>
+
+    <!-- copyright -->
+    <p class="footer_copyright font-footText">
+      Copyright 2022 Cogman Ltd.<br/>
+      All Right Reserved.
+    </p>
+    <!-- links -->
+    <div class="footer_links font-footLink">
+      <a class="link-button" href="#">Terms & Conditions</a>
+      <a class="link-button" href="#">Privacy & Cookie Policy</a>
+      <a class="link-button" href="#">Site Security</a>
+      <a class="link-button" href="#">Compliance</a>
+    </div>
+
+    <div class="footer_divider"></div>
+
+    <!-- social medias -->
+    <div class="footer_socialLinks">
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-square-facebook fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-square-instagram fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-square-twitter fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-linkedin fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-discord fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-line fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-tiktok fa-fw"></i>
+      </a>
+      <a class="link-button" href="#">
+        <i class="fa-brands fa-weixin fa-fw"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- mobile menu -->
+  <div id="menu" class="main_menu">
+    <div class="menu_mask"></div>
+    <div class="menu_card font-textLink">
+      <a class="menu-button" href="#share">Share</a>
+      <a class="menu-button" href="#sponsor">Sponsor</a>
+      <a class="menu-button" href="#cats">Cats</a>
+      <a class="menu-button" href="#photographers">PhotoGraphers</a>
+    </div>
+  </div>
 
   <!-- JavsScript & JavsScript of Packages -->
+  <script type="text/javascript" src="./utils/reviseIsoString.js"></script>
   <script type="text/javascript" src="./libs/jquery/jquery.min.js"></script>
   <script>
-    const checkServerAlive = () => {
+    const checkServerAlive = function() {
       $.ajax({
         url: "/api/system/checkAlive",
       });
     }
 
+    const renderCatList = function () {
+      // fake cat data
+      const picInfo = {
+        img: './img/pic-cat-example.jpg',
+        photographer: 'Samuel Castillo',
+        photoAt: new Date(Date.now())
+      }
+
+      const loop = 10;
+      var htmlText = '';
+      for(var i = 0; i < loop; i ++ ){
+        htmlText += '<div class="list_card">';
+        htmlText += '<img class="card_img" src="' + picInfo.img + '">';
+        htmlText += '<label class="card_label font-cardText">By ' + picInfo.photographer + '</label>';
+        htmlText += '<label class="card_time font-cardText">' + reviseIsoString(picInfo.photoAt).date + '</label>';
+        htmlText += '</div>';
+      }
+      $('#listCats').html(htmlText);
+    }
+
+    const renderPhotographerList = function () {
+      // fake photographer data
+        const picInfo = {
+        img: './img/pic-photographer-example.jpg',
+        photographer: 'Samuel Castillo'
+      }
+
+      const loop = 10;
+      var htmlText = '';
+      for(var i = 0; i < loop; i ++ ){
+        htmlText += '<div class="list_card">';
+        htmlText += '<img class="card_img" src="' + picInfo.img + '">';
+        htmlText += '<label class="card_label font-cardText">' + picInfo.photographer + '</label>';
+        htmlText += '</div>';
+      }
+      $('#listPhotographer').html(htmlText);
+    }
+
+    const loadMobileMenuToggleClick = function() {
+      $('#buttonMenu').click(()=>{
+        const mainMenu = $('#menu');
+        if(mainMenu.hasClass('active')) {
+          mainMenu.removeClass('active');
+        } else {
+          mainMenu.addClass('active')
+        }
+      })
+
+      $('.menu-button').click(()=>{
+        const mainMenu = $('#menu');
+        if(mainMenu.hasClass('active')) {
+          mainMenu.removeClass('active');
+        }
+      })
+    }
+
+    const loadEvents = function() {
+      loadMobileMenuToggleClick();
+    }
+
     $(document).ready(function () {
       checkServerAlive();
+
+      renderCatList();
+      renderPhotographerList();
+
+      loadEvents();
     })
   </script>
 </body>
