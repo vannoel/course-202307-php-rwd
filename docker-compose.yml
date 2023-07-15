@@ -28,10 +28,11 @@ services:
       - db
     volumes:
       - ./backend/app:/api/app
+      - ./backend/database:/api/database
       - ./backend/config:/api/config
       - ./backend/routes:/api/routes
       - ./backend/storage:/api/storage
-  forestage:
+  frontend:
     container_name: course-202307-php-rwd-frontend
     build:
       context: ./frontend

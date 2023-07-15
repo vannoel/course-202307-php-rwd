@@ -31,6 +31,20 @@ docker compose down
 
 Only install [PHP](https://www.php.net/) when you need to execute php directly.
 
+### migrate
+
+```
+docker compose exec backend php artisan migrate
+```
+
+### db
+
+```
+docker compose exec backend php artisan db:wipe
+
+docker compose exec backend php artisan db:seed
+```
+
 ## Frontend ( Javascript )
 
 ### Install
