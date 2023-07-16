@@ -27,10 +27,6 @@ RUN php artisan key:generate
 # Run up server directly
 CMD php artisan serve --host 0.0.0.0 --port 9000
 
-# Waiting for DB service up.
-# CMD ./scripts/wait-for-it.sh db:3306 -t 30 -- php artisan migrate --seed \
-#     && php artisan serve --host 0.0.0.0 --port 9000
-
 # Keep open
 # CMD tail -F anything 
 
