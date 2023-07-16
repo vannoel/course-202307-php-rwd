@@ -1,6 +1,10 @@
 # course-202307-php-rwd
 Project of course to laravel and RWD.
 
+## Material
+
+Download from [Google Drive](https://drive.google.com/drive/u/1/folders/1velez_PFmTgzpV-UDAvkNVK75KqXzF1X)
+
 ## Docker
 
 ### install
