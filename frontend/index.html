@@ -233,6 +233,20 @@
       loadMobileMenuToggleClick();
     }
 
+    // const handleResize = function () {
+    //   console.log('window resized')
+    // }
+
+    const listenWindowResize = function() {
+      // in Javascript way
+      // window.addEventListener('resize', handleResize)
+
+      // in jQuery way
+      // $(window).resize(function() {
+      //   console.log('window resized')
+      // });
+    }
+
     $(document).ready(function () {
       checkServerAlive();
 
@@ -240,6 +254,8 @@
       renderPhotographerList();
 
       loadEvents();
+
+      listenWindowResize();
     })
   </script>
 </body>
