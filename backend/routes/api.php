@@ -17,6 +17,15 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+// swagger
 Route::get('swagger', 'App\Http\Controllers\Swagger\SwaggerController@getJSON');
 
+// system
 Route::get('system/checkAlive', 'App\Http\Controllers\System\SystemController@checkAlive');
+
+// photographer
+Route::get('photographer/random', 'App\Http\Controllers\Photographer\PhotographerController@getPhotographerRandom');
+Route::post('photographer/list', 'App\Http\Controllers\Photographer\PhotographerController@getPhotographer');
+
+// picture
+Route::get('picture/random', 'App\Http\Controllers\Picture\PictureController@getPictureRandom');

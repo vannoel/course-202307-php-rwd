@@ -177,7 +177,7 @@
       // fake cat data
       const picInfo = {
         img: './img/pic-cat-example.jpg',
-        photographer: 'Samuel Castillo',
+        name: 'Samuel Castillo',
         photoAt: new Date(Date.now())
       }
 
@@ -186,7 +186,7 @@
       for(var i = 0; i < loop; i ++ ){
         htmlText += '<div class="list_card">';
         htmlText += '<img class="card_img" src="' + picInfo.img + '">';
-        htmlText += '<label class="card_label font-cardText">By ' + picInfo.photographer + '</label>';
+        htmlText += '<label class="card_label font-cardText">By ' + picInfo.name + '</label>';
         htmlText += '<label class="card_time font-cardText">' + reviseIsoString(picInfo.photoAt).date + '</label>';
         htmlText += '</div>';
       }

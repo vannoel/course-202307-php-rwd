@@ -17,14 +17,14 @@ class SystemController extends BaseController
 {
   /**
    * @OA\Get(
-   *   path="/system/checkAlive",
-   *   summary="Check server is alive.",
    *   tags={"System"},
+   *   path="/api/system/checkAlive",
+   *   summary="Check server is alive.",
    *   description="Check server is alive.",
-   *   operationId="1",
+   *   operationId="checkAlive",
    *   @OA\Response(
    *     response=200,
-   *     description="Server is alive.",
+   *     description="OK",
    *     @OA\MediaType(
    *       mediaType="text/html",
    *       @OA\Schema(

@@ -8,7 +8,7 @@ class SwaggerController extends BaseController
 {
   public function getJSON()
   {
-    $swagger = \OpenApi\Generator::scan([app_path('Http/Controllers/')]);
+    $swagger = \OpenApi\Generator::scan([app_path('/')]);
     return response()->json($swagger, 200);
   }
 }
