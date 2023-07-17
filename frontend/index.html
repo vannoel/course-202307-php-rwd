@@ -166,13 +166,8 @@
   <!-- JavsScript & JavsScript of Packages -->
   <script type="text/javascript" src="./utils/reviseIsoString.js"></script>
   <script type="text/javascript" src="./libs/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="./libs/gsap/gsap.min.js"></script>
   <script>
-    const checkServerAlive = function() {
-      $.ajax({
-        url: "/api/system/checkAlive",
-      });
-    }
-
     const renderCatList = function () {
       // fake cat data
       const picInfo = {
@@ -248,8 +243,6 @@
     }
 
     $(document).ready(function () {
-      checkServerAlive();
-
       renderCatList();
       renderPhotographerList();
 

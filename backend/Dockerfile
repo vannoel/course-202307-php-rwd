@@ -14,6 +14,8 @@ RUN docker-php-ext-enable mysqli pdo pdo_mysql
 
 RUN composer install
 
+# COPY ./custom.ini /usr/local/etc/php/conf.d/custom.ini
+
 RUN php artisan config:clear
 
 RUN php artisan cache:clear
@@ -25,9 +27,9 @@ RUN php artisan key:generate
 # RUN php artisan storage:link
 
 # Run up server directly
-CMD php artisan serve --host 0.0.0.0 --port 9000
+CMD php artisan serve --host 0.0.0.0 --port 8000
 
 # Keep open
 # CMD tail -F anything 
 
-EXPOSE 9000
+EXPOSE 8000

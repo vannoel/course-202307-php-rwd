@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 Route::get('swagger', 'App\Http\Controllers\Swagger\SwaggerController@getJSON');
 
 // system
-Route::get('system/checkAlive', 'App\Http\Controllers\System\SystemController@checkAlive');
+Route::get('system/check-alive', 'App\Http\Controllers\System\SystemController@checkAlive');
 
 // photographer
 Route::get('photographer/random', 'App\Http\Controllers\Photographer\PhotographerController@getPhotographerRandom');
