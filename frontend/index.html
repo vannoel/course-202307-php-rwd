@@ -75,7 +75,7 @@
           See our awesome photographers.<br />
           If you like their cat pictures,<br />
           Sponsoring them to let them<br />
-          keep doing the thing they love.<br/>
+          keep doing the thing they love.<br />
           To take cat pictures!
         </p>
       </div>
@@ -120,7 +120,7 @@
       <div class="container_icon">
         <img src="./img/paw.png" />
       </div>
-  
+
       <div class="container_content">
         <!-- copyright -->
         <p class="content_copyright font-footText">
@@ -137,9 +137,9 @@
           <div class="links_divider"></div>
           <a class="link-button" href="#">Compliance</a>
         </div>
-    
+
         <div class="content_divider"></div>
-    
+
         <!-- social medias -->
         <div class="content_socialLinks">
           <a class="link-button" href="#">
@@ -198,6 +198,9 @@
     const checkServerAlive = function () {
       $.ajax({
         url: "/api/system/check-alive",
+        method: "GET"
+      }).done(function (response) {
+        console.log(response);
       });
     }
 
@@ -221,22 +224,43 @@
       $('#listCats').html(htmlText);
     }
 
-    const renderPhotographerList = function () {
-      // fake photographer data
-      const picInfo = {
-        img: './img/pic-photographer-example.jpg',
-        photographer: 'Samuel Castillo'
-      }
+    // const renderPhotographerList = function () {
+    //   // fake photographer data
+    //   const picInfo = {
+    //     img: './img/pic-photographer-example.jpg',
+    //     photographer: 'Samuel Castillo'
+    //   }
 
-      const loop = 12;
-      var htmlText = '';
-      for (var i = 0; i < loop; i++) {
-        htmlText += '<div class="list_card">';
-        htmlText += '<img class="card_img" src="' + picInfo.img + '">';
-        htmlText += '<label class="card_label font-cardText">' + picInfo.photographer + '</label>';
-        htmlText += '</div>';
-      }
-      $('#listPhotographer').html(htmlText);
+    //   const loop = 12;
+    //   var htmlText = '';
+    //   for (var i = 0; i < loop; i++) {
+    //     htmlText += '<div class="list_card">';
+    //     htmlText += '<img class="card_img" src="' + picInfo.img + '">';
+    //     htmlText += '<label class="card_label font-cardText">' + picInfo.photographer + '</label>';
+    //     htmlText += '</div>';
+    //   }
+    //   $('#listPhotographer').html(htmlText);
+    // }
+
+    const getPhotographerRandom = function () {
+      $.ajax({
+        url: "/api/photographer/random",
+        method: "GET",
+        data: { 
+          count: 12
+        }
+      }).done(function (response) {
+        var htmlText = '';
+        if(response.result) {
+          for (var i = 0; i < response.result.length; i++) {
+            htmlText += '<div class="list_card">';
+            htmlText += '<img class="card_img" src="http://localhost:8000/photographers/pic-photographer-' + response.result[i].id + '.jpg">';
+            htmlText += '<label class="card_label font-cardText">' + response.result[i].name + '</label>';
+            htmlText += '</div>';
+          }
+          $('#listPhotographer').html(htmlText);
+        }
+      });
     }
 
     const loadMobileMenuToggleClick = function () {
@@ -279,7 +303,9 @@
       checkServerAlive();
 
       renderCatList();
-      renderPhotographerList();
+      // renderPhotographerList();
+
+      getPhotographerRandom();
 
       loadEvents();
 
