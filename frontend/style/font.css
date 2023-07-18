@@ -69,3 +69,10 @@
     font-size: 14px;
   }
 }
+
+.font-topButton {
+  /* pc */
+  font-size: 14px;
+  font-weight: normal;
+  font-weight: bold;
+}
