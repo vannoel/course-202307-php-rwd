@@ -97,7 +97,7 @@
         CATS!
       </h1>
     </div>
-    <div id="listCats" class="section_list"></div>
+    <div id="listCat" class="section_list"></div>
   </section>
 
   <!-- Photographer -->
@@ -204,24 +204,74 @@
       });
     }
 
-    const renderCatList = function () {
-      // fake cat data
-      const picInfo = {
-        img: './img/pic-cat-example.jpg',
-        name: 'Samuel Castillo',
-        photoAt: new Date(Date.now())
-      }
+    // const renderCatList = function () {
+    //   // fake cat data
+    //   const picInfo = {
+    //     img: './img/pic-cat-example.jpg',
+    //     name: 'Samuel Castillo',
+    //     photoAt: new Date(Date.now())
+    //   }
 
-      const loop = 12;
-      var htmlText = '';
-      for (var i = 0; i < loop; i++) {
-        htmlText += '<div class="list_card">';
-        htmlText += '<img class="card_img" src="' + picInfo.img + '">';
-        htmlText += '<label class="card_label font-cardText">By ' + picInfo.name + '</label>';
-        htmlText += '<label class="card_time font-cardText">' + reviseIsoString(picInfo.photoAt).date + '</label>';
-        htmlText += '</div>';
-      }
-      $('#listCats').html(htmlText);
+    //   const loop = 12;
+    //   var htmlText = '';
+    //   for (var i = 0; i < loop; i++) {
+    //     htmlText += '<div class="list_card">';
+    //     htmlText += '<img class="card_img" src="' + picInfo.img + '">';
+    //     htmlText += '<label class="card_label font-cardText">By ' + picInfo.name + '</label>';
+    //     htmlText += '<label class="card_time font-cardText">' + reviseIsoString(picInfo.photoAt).date + '</label>';
+    //     htmlText += '</div>';
+    //   }
+    //   $('#listCat').html(htmlText);
+    // }
+
+    const getPictureList = function () {
+      $.ajax({
+        url: "/api/picture/list",
+        method: "POST",
+        data: { 
+          pageIndex:1,
+          pageSize:12,
+          sortBy:'id',
+          sortOrder: 'asc'
+        }
+      }).done(function (response) {
+        console.log('getPictureList',response)
+      });
+    }
+
+    const getPictureRandom = function () {
+      $.ajax({
+        url: "/api/photographer/random",
+        method: "GET",
+        data: { 
+          count: 12
+        }
+      }).done(function (response) {
+        var htmlText = '';
+        if(response.result) {
+          for (var i = 0; i < response.result.length; i++) {
+            htmlText += '<div class="list_card">';
+            htmlText += '<img class="card_img" src="http://localhost:8000/pictures/pic-cat-' + response.result[i].id + '.jpg">';
+            htmlText += '<label class="card_label font-cardText">By ' + response.result[i].name + '</label>';
+            htmlText += '</div>';
+          }
+          $('#listCat').html(htmlText);
+        }
+      });
+    }
+    const getPhotographerList = function () {
+      $.ajax({
+        url: "/api/photographer/list",
+        method: "POST",
+        data: { 
+          pageIndex:1,
+          pageSize:12,
+          sortBy:'id',
+          sortOrder: 'desc'
+        }
+      }).done(function (response) {
+        console.log('getPhotographerList',response)
+      });
     }
 
     // const renderPhotographerList = function () {
@@ -302,10 +352,13 @@
     $(document).ready(function () {
       checkServerAlive();
 
-      renderCatList();
+      // renderCatList();
       // renderPhotographerList();
 
+      getPictureRandom();
+      getPictureList();
       getPhotographerRandom();
+      getPhotographerList();
 
       loadEvents();
 

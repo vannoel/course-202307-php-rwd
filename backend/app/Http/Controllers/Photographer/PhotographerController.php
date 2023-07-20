@@ -115,9 +115,20 @@ class PhotographerController extends BaseController
    */
   public function getPhotographer(Request $request)
   {
-    // search
-    $result = Photographer::where([
-    ])->get();
+    // example for search
+    // $result = Photographer::select([
+    //   'id',
+    //   'age',
+    //   'gender'
+    // ])->where([
+    //   ['age', '>', 50],
+    //   ['gender', '=', 'female']
+    // ])->orWhere([
+    //   ['age', '>', 40],
+    //   ['gender', '=', 'male']
+    // ])->get();
+    
+    $result = Photographer::where([])->get();
 
     $total = $result->count();
 

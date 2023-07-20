@@ -29,3 +29,4 @@ Route::post('photographer/list', 'App\Http\Controllers\Photographer\Photographer
 
 // picture
 Route::get('picture/random', 'App\Http\Controllers\Picture\PictureController@getPictureRandom');
+Route::post('picture/list', 'App\Http\Controllers\Picture\PictureController@getPicture');

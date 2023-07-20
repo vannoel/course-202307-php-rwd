@@ -68,4 +68,80 @@ class PictureController extends BaseController
       'result' => $result,
     ]);
   }
+
+  /**
+   * @OA\Post(
+   *   tags={"Picture"},
+   *   path="/api/picture/list",
+   *   summary="Get pictures",
+   *   description="Get pictures",
+   *   operationId="getPicture",
+   *   @OA\RequestBody(
+   *     description="Get picture",
+   *     required=true,
+   *     @OA\MediaType(
+   *       mediaType="multipart/form-data",
+   *       @OA\Schema(
+   *         @OA\Property(
+   *           property="pageIndex",
+   *           type="number"
+   *         ),
+   *         @OA\Property(
+   *           property="pageSize",
+   *           type="number"
+   *         ),
+   *         @OA\Property(
+   *           property="sortBy",
+   *           type="string"
+   *         ),
+   *         @OA\Property(
+   *           property="sortOrder",
+   *           type="string"
+   *         ),
+   *       )
+   *     )
+   *   ),
+   *   @OA\Response(
+   *     response="200",
+   *     description="List of picture",
+   *     @OA\JsonContent(
+   *       type="array",
+   *       @OA\Items(ref="#/components/schemas/Picture")
+   *     )
+   *   ),
+   *   @OA\Response(response=404, description="Not Found"),
+   *   deprecated=false
+   * )
+   */
+  public function getPicture(Request $request)
+  {
+    // search
+    $result = Picture::where([
+    ])->get();
+
+    $total = $result->count();
+
+    // sort
+    $sortBy = empty($request->sortBy) ? 'created_at' : $request->sortBy;
+    $sortOrder = empty($request->sortOrder) ? 'desc' : $request->sortOrder;
+
+    $sortedResult = $result->sortBy([
+      [$sortBy, $sortOrder]
+    ]);
+
+    // paginate
+    $pageIndex = empty($request->pageIndex) ? 1 : $request->pageIndex;
+    $pageSize = empty($request->pageSize) ? 10 : $request->pageSize;
+
+    $paginatedResult = $sortedResult->forPage($pageIndex, $pageSize)->values()->all();
+
+    return response()->json([
+      'status' => true,
+      'message' => 'success',
+      'result' => [
+        'total' => $total,
+        'data' => $paginatedResult
+      ]
+    ]);
+  }
 }
